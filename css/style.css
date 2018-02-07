@@ -784,6 +784,25 @@ ul.year li:nth-child(5){
     margin-top: 3em;
 }
 /*--//work--*/
+.skills h2{
+	color: #ffffff;
+	font-size: 1.4em;
+	font-family: 'Asap', sans-serif;
+	margin:15px;
+	padding:5px;
+	background-color: #00a78e;
+	text-align: center;
+	border-radius: 3px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.skills li{
+	list-style: none;
+	color: #797878;
+	font-size: 1em;
+	font-family: 'Asap', sans-serif;
+	margin:0;
+	padding:5px;
+}
 /*-- portfolio --*/
 .portfolio-head h2{
 	color: #202020;
