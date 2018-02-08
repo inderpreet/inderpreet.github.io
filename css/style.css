@@ -785,7 +785,8 @@ ul.year li:nth-child(5){
 }
 /*--//work--*/
 #skill {
-    background: #1b242f;
+	background: #1b242f;
+	padding: 50px;
 }
 
 .skills h2{
