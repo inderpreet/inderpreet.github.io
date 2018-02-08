@@ -784,20 +784,30 @@ ul.year li:nth-child(5){
     margin-top: 3em;
 }
 /*--//work--*/
+#skill {
+    background: #1b242f;
+}
+
 .skills h2{
-	color: #ffffff;
+	color: #00a78e;
 	font-size: 1.4em;
 	font-family: 'Asap', sans-serif;
 	margin:15px;
 	padding:5px;
-	background-color: #00a78e;
+	background-color: #1b242f;
 	text-align: center;
-	border-radius: 3px;
+	border: 2px solid #00a78e;
+	border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+	-o-border-radius: 0.3em;
+	-ms-border-radius: 0.3em;
+	/* margin-top:8em; */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .skills li{
 	list-style: none;
-	color: #797878;
+	color: #00a78e;
 	font-size: 1em;
 	font-family: 'Asap', sans-serif;
 	margin:0;
@@ -1052,7 +1062,7 @@ div#portfolioModal1,div#portfolioModal2,div#portfolioModal3,div#portfolioModal4,
     top: 25px;
     right: 25px;
    width: 45px;
-    height: 45px
+    height: 45px;
     background-color: transparent;
     cursor: pointer;
     z-index: 1;
