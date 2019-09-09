@@ -625,12 +625,12 @@ span.border.one:after {
 	padding: 5em 0;
 	background: #eeeeee;
 }
-.timeline {
+.meowline {
   list-style: none;
       padding: 10px 0 10px;
   position: relative;
 }
-.timeline:before {
+.meowline:before {
       top: 0;
     bottom: 0;
     position: absolute;
@@ -641,22 +641,22 @@ span.border.one:after {
     margin-right: -1.5px;
 }
 
-.timeline > li {
+.meowline > li {
   margin-bottom:10px;
   position: relative;
 }
 
-.timeline > li:before,
-.timeline > li:after {
+.meowline > li:before,
+.meowline > li:after {
   content: " ";
   display: table;
 }
 
-.timeline > li:after {
+.meowline > li:after {
   clear: both;
 }
 
-.timeline > li > .timeline-panel {
+.meowline > li > .meowline-panel {
   width: calc( 100% - 75px );
     float: right;
     border: 1px solid #d4d4d4;
@@ -667,22 +667,22 @@ span.border.one:after {
       background: #fff;
 	  border-bottom: 5px solid #00a78e;
 }
-h4.timeline-title a {
+h4.meowline-title a {
     margin: 0;
     padding: 5px 0;
     color:#333;
 }
-h4.timeline-title a:hover {
+h4.meowline-title a:hover {
     color: #00C6D7;
 }
-.timeline-body p {
+.meowline-body p {
     font-size: 0.9em;
     margin: 0;
     padding: 0;
     color: #777;
     line-height: 1.9em;
 }
-.timeline > li > .timeline-panel:before {
+.meowline > li > .meowline-panel:before {
   position: absolute;
   top: 18px;
   left: -15px;
@@ -694,7 +694,7 @@ h4.timeline-title a:hover {
   content: " ";
 }
 
-.timeline > li > .timeline-panel:after {
+.meowline > li > .meowline-panel:after {
   position: absolute;
   top:19px;
   left: -14px;
@@ -706,7 +706,7 @@ h4.timeline-title a:hover {
   content: " ";
 }
 
-.timeline > li > .timeline-badge {
+.meowline > li > .meowline-badge {
   color: #fff;
   width: 50px;
   height: 50px;
@@ -725,28 +725,28 @@ h4.timeline-title a:hover {
   border-bottom-left-radius: 50%;
 }
 
-.timeline-badge.primary {
+.meowline-badge.primary {
   background-color: #eb5424 !important;
 }
 
-.timeline-badge.success {
+.meowline-badge.success {
   background-color: #237f52 !important;
 }
 
-.timeline-badge.warning {
+.meowline-badge.warning {
   background-color: #f0ad4e !important;
 }
 
-.timeline-badge.danger {
+.meowline-badge.danger {
   background-color: #bb1e10 !important;
 }
-.timeline-badge.pass {
+.meowline-badge.pass {
   background-color: #fdbd10 !important;
 }
-.timeline-badge.info {
+.meowline-badge.info {
   background-color: #44c7f4 !important;
 }
-h4.timeline-title {
+h4.meowline-title {
        color: #1b242f;
     font-size: 1.2em;
         font-weight: 600;
@@ -778,7 +778,7 @@ ul.year li:nth-child(4){
 ul.year li:nth-child(5){
 	    margin-top: 112px;
 }
-.timeline-badge.success i {
+.meowline-badge.success i {
     font-size: 0.9em;
 }
 .time-main {
@@ -1452,7 +1452,7 @@ span.border.two:after {
 		margin-top: 0px!important;
 		    margin-bottom: 0em;
 	}
-	.timeline > li > .timeline-badge {
+	.meowline > li > .meowline-badge {
 		color: #fff;
 		width: 50px;
 		height: 50px;
@@ -1462,7 +1462,7 @@ span.border.two:after {
 		top: 16px;
 		left: -3px;
 	}
-	.timeline:before {
+	.meowline:before {
 		top: 0;
 		bottom: 0;
 		position: absolute;
@@ -1686,7 +1686,7 @@ span.border.two:after {
 	.wthree_about_right_grids {
 		margin-top:1.5em;
 	}
-	h4.timeline-title {
+	h4.meowline-title {
       font-size: 1em;
 	}
 	#work, .blog, #services {
@@ -2115,3 +2115,66 @@ width:110px;
 .custom-btn:active{color:#fff;outline:0;background-color:#00bcd4 !important;}
 .custom-btn:active:hover{color:#fff;outline:0;background-color:#00bcd4 !important;}
 .custom-btn:active:focus{color:#fff;outline:0;background-color:#00bcd4 !important;}
+
+@import url("https://fonts.googleapis.com/css?family=Oswald|Roboto:400,700");
+/* body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+} */
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: .5em;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: .8rem;
+}
+
+.container {
+  max-width: 1024px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  padding: 3em 2em 2em;
+  position: relative;
+  color: rgba(0, 0, 0, 0.7);
+  border-left: 2px solid rgba(0, 0, 0, 0.3);
+}
+.timeline-item p {
+  font-size: 1rem;
+}
+.timeline-item::before {
+  content: attr(date-is);
+  position: absolute;
+  left: 2em;
+  font-weight: bold;
+  top: 1em;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: .785rem;
+}
+.timeline-item::after {
+  width: 10px;
+  height: 10px;
+  display: block;
+  top: 1em;
+  position: absolute;
+  left: -7px;
+  border-radius: 10px;
+  content: '';
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  background: white;
+}
+.timeline-item:last-child {
+  -o-border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0)) 1 100%;
+     border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0)) 1 100%;
+}
