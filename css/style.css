@@ -27,7 +27,7 @@ body h1,h2,h3,h4,h5,h6{
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
-    min-height:650px;
+    min-height:350px;
 	position: relative;
 }
 .top-header {
@@ -622,7 +622,8 @@ span.border.one:after {
 /*-- clients --*/
 
 #work {
-    padding: 5em 0;
+	padding: 5em 0;
+	background: #eeeeee;
 }
 .timeline {
   list-style: none;
@@ -1222,7 +1223,7 @@ span.border.two:after {
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
-    min-height: 650px;
+    min-height: 150px;
     padding:5em 0 0em 0;
 }
 .footer_top ul li{
@@ -1290,7 +1291,7 @@ span.border.two:after {
 		padding:4em 0;
 	}
 	.footer {
-		min-height: 650px;
+		min-height: 150px;
 		padding: 4em 0 0em 0;
 	}
 	#port {
@@ -1345,7 +1346,7 @@ span.border.two:after {
 		padding: 3em 0 0 0;
 	}
 	.footer {
-		min-height: 587px;
+		min-height: 130px;
 		padding: 3em 0 0em 0;
 	}
 	ul.year li:nth-child(2) {
@@ -2097,3 +2098,20 @@ width:110px;
 	color:#ffffff;
 	color:rgba(0, 0, 0, 0.4);
 }
+
+#header nav #side-nav #nav-header #nav-profile{position:relative;top:10px;margin-bottom:20px;width:70px;height:70px;border-radius:50%;}
+#header nav #side-nav #nav-header #nav-profile img{width:100%;height:100%;border-radius:50%;}
+#about #profile{animation-delay:500ms;animation-duration:1000ms;position:absolute;width:180px;height:180px;top:-97px;left:50%;margin-left:-90px;z-index:1;display:block;border-radius:50%;background-color:#fff;padding:5px;box-shadow:0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.2);}
+#about #profile img{width:170px;height:170px;border-radius:50%;}
+#about #intro-div{padding:30px 0;}
+#about #intro-div ul{padding:0 5px;margin-top:85px;}
+#about #intro-div ul li a i{font-size:25px;color:#424242;opacity:.5;margin:0 5px;}
+#about #intro-div ul li a i:hover{color:#424242;opacity:1;}
+#about #intro-div p{padding:0 5%;margin:32px 0;}
+#about #intro-div .btn{width:180px;height:auto;margin:10px 10px;}
+.custom-btn{background-color:#00a78e !important;}
+.custom-btn:hover{color:#fff;outline:0;background-color:#008672 !important;}
+.custom-btn:focus{color:#fff;outline:0;background-color:#00bcd4 !important;}
+.custom-btn:active{color:#fff;outline:0;background-color:#00bcd4 !important;}
+.custom-btn:active:hover{color:#fff;outline:0;background-color:#00bcd4 !important;}
+.custom-btn:active:focus{color:#fff;outline:0;background-color:#00bcd4 !important;}
