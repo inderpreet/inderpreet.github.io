@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><title>Firmware Development Style Guide | Layered Systems</title><meta name="title" content="Firmware Development Style Guide | Layered Systems"/><meta name="description" content="Comprehensive firmware development style guide based on Linux Kernel and industry best practices"/><meta name="keywords" content="firmware, embedded, c, cpp, coding standards, best practices, style guide"/><meta name="author" content="Inderpreet Singh"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:type" content="website"/><meta property="og:url" content="https://inderpreet.github.io"/><meta property="og:title" content="Firmware Development Style Guide | Layered Systems"/><meta property="og:description" content="Comprehensive firmware development style guide based on Linux Kernel and industry best practices"/><meta property="og:image" content="/og-image.jpg"/><meta property="twitter:card" content="summary_large_image"/><meta property="twitter:url" content="https://inderpreet.github.io"/><meta property="twitter:title" content="Firmware Development Style Guide | Layered Systems"/><meta property="twitter:description" content="Comprehensive firmware development style guide based on Linux Kernel and industry best practices"/><meta property="twitter:image" content="/og-image.jpg"/><meta name="robots" content="index, follow"/><meta name="language" content="English"/><link rel="canonical" href="https://inderpreet.github.io"/><meta name="next-head-count" content="20"/><meta charSet="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#000000"/><link rel="preload" href="/_next/static/css/1d29b84bfc5354c8.css" as="style"/><link rel="stylesheet" href="/_next/static/css/1d29b84bfc5354c8.css" data-n-g=""/><link rel="preload" href="/_next/static/css/dea9ce025cd2a166.css" as="style"/><link rel="stylesheet" href="/_next/static/css/dea9ce025cd2a166.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-42372ed130431b0a.js"></script><script src="/_next/static/chunks/webpack-639aa3d8bfe7ee72.js" defer=""></script><script src="/_next/static/chunks/framework-64ad27b21261a9ce.js" defer=""></script><script src="/_next/static/chunks/main-d979f5fb3aa68004.js" defer=""></script><script src="/_next/static/chunks/pages/_app-20693b9d02de5813.js" defer=""></script><script src="/_next/static/chunks/632-9efadbc007daedcf.js" defer=""></script><script src="/_next/static/chunks/474-52732c874e9cc209.js" defer=""></script><script src="/_next/static/chunks/666-58cfeb78f799b3ee.js" defer=""></script><script src="/_next/static/chunks/pages/docs/firmware-style-guide-2909c49839291fc8.js" defer=""></script><script src="/_next/static/phl_WOpLyX2gCvGrSm1hh/_buildManifest.js" defer=""></script><script src="/_next/static/phl_WOpLyX2gCvGrSm1hh/_ssgManifest.js" defer=""></script></head><body><div id="__next"><div class="Layout_container__l2gjk"><header class="Layout_header__8XhYm"><div class="Layout_headerContent__06wDW"><nav class="Layout_nav__qOLUE "><a href="/">Home</a><a href="/about">About</a><div class="Layout_dropdown__z3jRI"><button class="Layout_dropdownToggle__WdMTA" aria-expanded="false" aria-haspopup="true">Resources<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="margin-left:0.25rem;transform:rotate(0deg);transition:transform 0.2s"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none"></path></svg></button><div class="Layout_dropdownMenu__zEIeU "><a href="/monitor" class="Layout_dropdownItem__tEDBv"><span class="Layout_dropdownIcon__fA6Ww">🎛️</span><div><div class="Layout_dropdownItemTitle__VcVEY">System Monitor</div><div class="Layout_dropdownItemDesc__DjI_j">Real-time dashboard</div></div></a><a href="https://github.com/inderpreet" target="_blank" rel="noopener noreferrer" class="Layout_dropdownItem__tEDBv"><span class="Layout_dropdownIcon__fA6Ww">💻</span><div><div class="Layout_dropdownItemTitle__VcVEY">GitHub</div><div class="Layout_dropdownItemDesc__DjI_j">View my repositories</div></div></a><div class="Layout_dropdownDivider__ySCu0"></div><a href="/docs" class="Layout_dropdownItem__tEDBv"><span class="Layout_dropdownIcon__fA6Ww">📚</span><div><div class="Layout_dropdownItemTitle__VcVEY">Documentation</div><div class="Layout_dropdownItemDesc__DjI_j">Guides &amp; tutorials</div></div></a><a href="#" class="Layout_dropdownItem__tEDBv"><span class="Layout_dropdownIcon__fA6Ww">🚀</span><div><div class="Layout_dropdownItemTitle__VcVEY">Projects</div><div class="Layout_dropdownItemDesc__DjI_j">Explore my work</div></div></a></div></div></nav><div class="Layout_logoSection__xngcy"><h1 class="Layout_logo__Yfd0y"><a href="/">Layered Systems</a></h1><p class="Layout_tagline__pRBfO">Engineering judgment, one layer at a time.</p></div><div class="Layout_socialIcons__8_CJc"><button class="ThemeToggle_themeToggle__Lxt_p" aria-label="Toggle theme"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle></svg></button><a href="https://github.com/inderpreet" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a><a href="https://twitter.com/ip_v1" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg></a><a href="https://linkedin.com/in/inderpreets" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a></div><button class="Layout_mobileMenuButton__nLMRy" aria-label="Toggle menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button></div></header><main class="Layout_main__BqQ1G"><div class="DocPage_docPage__Qdsb4"><nav class="DocPage_breadcrumb__J54Sd"><a href="/docs">Documentation</a><span class="DocPage_separator__RKcGr">→</span><span>Firmware Style Guide</span></nav><article class="DocPage_docContent___JVCh"><div class="DocPage_docHeader__Y5C98"><span class="DocPage_docIcon__jns7y">⚡</span><div><h1 class="DocPage_docTitle__K2QE1">Firmware Development Style Guide</h1><p class="DocPage_docSubtitle__jvYcE">Team Guidelines · Version 7.0 · Last Updated: October 2025</p></div></div><div class="DocPage_tableOfContents__lTOVr"><h3>Contents</h3><ul><li><a href="#formatting">Formatting</a></li><li><a href="#naming">Naming Conventions</a></li><li><a href="#typedefs">Typedefs</a></li><li><a href="#functions">Functions</a></li><li><a href="#returns">Return Values</a></li><li><a href="#conditional">Conditional Compilation</a></li><li><a href="#goto">Centralized Exit (goto)</a></li><li><a href="#headers">Headers</a></li><li><a href="#includes">Include Order</a></li><li><a href="#commenting">Commenting</a></li><li><a href="#templates">Templates</a></li></ul></div><div class="DocPage_sourceReference__QYJC7"><strong>📄 Source:</strong> Based on <a href="https://raw.githubusercontent.com/inderpreet/inderpreet/main/s_style_guide.md" target="_blank" rel="noopener">original style guide</a></div><section id="formatting"><h2>Formatting</h2><h3>Line Size</h3><p>Keep source lines to <strong>79 characters or less</strong> for maximum readability. Statements longer than 80 columns should be broken into sensible chunks, unless exceeding 80 columns significantly increases readability. Descendants are always substantially shorter than the parent and placed substantially to the right.</p><div class="DocPage_tipBox__pivBg"><strong>⚠️ Exception:</strong> Never break user-visible strings such as printk messages, because that breaks the ability to grep for them.</div><h3>Indentations</h3><p>Indentations are <strong>8 characters</strong>.</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Correct Indentation</div><pre><code>void process_data(void)
+{
+        int count = 0;
+        
+        for (int i = 0; i &lt; MAX_COUNT; i++) {
+                if (data[i] &gt; THRESHOLD) {
+                        process_item(data[i]);
+                        count++;
+                }
+        }
+}</code></pre></div><h3>Braces</h3><p>Put the opening brace <strong>last on the line</strong>, and put the closing brace first:</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Non-Function Blocks</div><pre><code>if (x is true) {
+        we do y
+}
+
+switch (action) {
+case FOO:
+        do_foo();
+        break;
+case BAR:
+        do_bar();
+        break;
+default:
+        break;
+}</code></pre></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Function Blocks</div><pre><code>int function(int x)
+{
+        body of function
+        return result;
+}</code></pre></div><div class="DocPage_tipBox__pivBg"><strong>Note:</strong> Functions are special - their opening brace goes on the next line.</div><h3>Spaces</h3><div class="DocPage_spaceRules__7dH9F"><div class="DocPage_ruleItem__INlCN"><span class="DocPage_ruleIcon__rBXja">✅</span><div><strong>Use space after:</strong><code>if, switch, case, for, do, while</code></div></div><div class="DocPage_ruleItem__INlCN"><span class="DocPage_ruleIcon__rBXja">❌</span><div><strong>No space after:</strong><code>sizeof, typeof, alignof, __attribute__</code></div></div><div class="DocPage_ruleItem__INlCN"><span class="DocPage_ruleIcon__rBXja">❌</span><div><strong>No spaces inside parentheses:</strong><code>s = sizeof(struct file);</code> not <code>s = sizeof( struct file );</code></div></div><div class="DocPage_ruleItem__INlCN"><span class="DocPage_ruleIcon__rBXja">✅</span><div><strong>One space around binary/ternary operators</strong></div></div><div class="DocPage_ruleItem__INlCN"><span class="DocPage_ruleIcon__rBXja">❌</span><div><strong>No space after unary operators:</strong><code>&amp;, *, +, -, ~, !, ++, --</code></div></div><div class="DocPage_ruleItem__INlCN"><span class="DocPage_ruleIcon__rBXja">❌</span><div><strong>No trailing whitespace</strong></div></div></div></section><section id="naming"><h2>Naming Conventions</h2><div class="DocPage_namingGrid__4MvtC"><div class="DocPage_namingCard__AqJ33"><h3>🌐 Global Variables</h3><p>Use <strong>descriptive names</strong> (only when necessary)</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good</div><pre><code>int count_active_users;
+struct device_info *current_device;</code></pre></div></div><div class="DocPage_namingCard__AqJ33"><h3>📍 Local Variables</h3><p>Should be <strong>short and to the point</strong></p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good</div><pre><code>int i, tmp;
+char *p;
+size_t len;</code></pre></div></div></div></section><section id="typedefs"><h2>Typedefs</h2><p><strong>Avoid typedefs</strong> for structures and pointers. Use plain <code>struct my_structure *a;</code> for clarity.</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good</div><pre><code>struct sensor_data {
+        float temperature;
+        float humidity;
+        uint32_t timestamp;
+};
+
+struct sensor_data *data;</code></pre></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw DocPage_bad__SUOUD">❌ Avoid</div><pre><code>typedef struct {
+        float temperature;
+        float humidity;
+} SensorData;  // Hides the fact it&#x27;s a struct
+
+SensorData *data;  // Less clear</code></pre></div><div class="DocPage_tipBox__pivBg"><strong>✅ Exception:</strong> Fixed-width typedefs like <code>u8</code>, <code>u16</code>,<code>u32</code>, <code>uint8_t</code>, <code>uint16_t</code> are acceptable and encouraged.</div></section><section id="functions"><h2>Functions</h2><h3>Function Guidelines</h3><div class="DocPage_guidelineList__9DhBd"><div class="DocPage_guidelineItem__FrM0w"><div class="DocPage_guidelineIcon__F7mso">📏</div><div><strong>Short and Focused</strong><p>Functions should be <strong>one or two screenfuls</strong> maximum</p></div></div><div class="DocPage_guidelineItem__FrM0w"><div class="DocPage_guidelineIcon__F7mso">🎯</div><div><strong>Single Responsibility</strong><p>Each function should <strong>do one thing</strong> and do it well</p></div></div><div class="DocPage_guidelineItem__FrM0w"><div class="DocPage_guidelineIcon__F7mso">📊</div><div><strong>Few Variables</strong><p>Preferably <strong>under 7–10 local variables</strong></p></div></div><div class="DocPage_guidelineItem__FrM0w"><div class="DocPage_guidelineIcon__F7mso">📐</div><div><strong>Separation</strong><p>Separate functions with <strong>one blank line</strong></p></div></div></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good Function Example</div><pre><code>void initialize_sensor(void)
+{
+        gpio_set_mode(SENSOR_PIN, GPIO_MODE_INPUT);
+        i2c_init(I2C_FREQ_100KHZ);
+        delay_ms(100);
+}
+
+void read_sensor_data(struct sensor_data *data)
+{
+        if (!data)
+                return;
+                
+        data-&gt;temperature = i2c_read_register(TEMP_REG);
+        data-&gt;humidity = i2c_read_register(HUM_REG);
+        data-&gt;timestamp = get_system_time();
+}</code></pre></div></section><section id="returns"><h2>Function Return Values</h2><p>Standard return conventions for success/failure:</p><div class="DocPage_returnConvention__4FOYH"><div class="DocPage_returnItem__KXs5c"><div class="DocPage_returnValue__e7L7Z DocPage_success__gsx4s">0</div><div><strong>Success</strong><p>Operation completed successfully</p></div></div><div class="DocPage_returnItem__KXs5c"><div class="DocPage_returnValue__e7L7Z DocPage_failure__4RupB">1</div><div><strong>Failed</strong><p>Operation failed</p></div></div></div><div class="DocPage_tipBox__pivBg"><strong>📋 Error Codes:</strong> Other error codes should be defined centrally in a header file (e.g., <code>errors.h</code> or <code>error_codes.h</code>).</div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">errors.h</div><pre><code>#ifndef ERRORS_H
+#define ERRORS_H
+
+#define SUCCESS         0
+#define ERROR_FAILED    1
+#define ERROR_TIMEOUT   2
+#define ERROR_NO_MEM    3
+#define ERROR_INVALID   4
+#define ERROR_NOT_READY 5
+
+#endif  // ERRORS_H</code></pre></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Usage Example</div><pre><code>int connect_to_wifi(const char *ssid, const char *password)
+{
+        if (!ssid || !password)
+                return ERROR_INVALID;
+                
+        if (!wifi_ready())
+                return ERROR_NOT_READY;
+                
+        if (!wifi_connect(ssid, password, TIMEOUT_MS))
+                return ERROR_TIMEOUT;
+                
+        return SUCCESS;
+}</code></pre></div></section><section id="conditional"><h2>Conditional Compilation</h2><p>Avoid scattering <code>#ifdef</code>/<code>#if</code> blocks throughout code. Instead, provide stub functions in headers for alternative cases.</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">❌ Bad - Scattered #ifdefs</div><pre><code>void process_data(void)
+{
+        prepare_data();
+        
+#ifdef FEATURE_LOGGING
+        log_data();
+#endif
+        
+        send_data();
+        
+#ifdef FEATURE_LOGGING
+        log_sent();
+#endif
+}</code></pre></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good - Stub Functions</div><pre><code>// In header file
+#ifdef FEATURE_LOGGING
+void log_data(void);
+void log_sent(void);
+#else
+static inline void log_data(void) { }
+static inline void log_sent(void) { }
+#endif
+
+// In source file - clean code
+void process_data(void)
+{
+        prepare_data();
+        log_data();
+        send_data();
+        log_sent();
+}</code></pre></div><div class="DocPage_tipBox__pivBg"><strong>💡 Pro Tip:</strong> Use <code>__maybe_unused</code> attribute for definitions that may be unused in some configurations.</div><p>After any non-trivial <code>#endif</code>, add a trailing comment:</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Commented #endif</div><pre><code>#ifdef CONFIG_ADVANCED_FEATURES
+        enable_advanced_mode();
+        configure_advanced_settings();
+#endif  // CONFIG_ADVANCED_FEATURES</code></pre></div></section><section id="goto"><h2>Centralized Exiting of Functions</h2><p>Using <code>goto</code> for centralized cleanup is <strong>acceptable and often cleaner</strong>than duplicating cleanup logic across multiple return points.</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good - Centralized Cleanup with goto</div><pre><code>int fun(int a)
+{
+        int result = 0;
+        char *buffer;
+
+        buffer = kmalloc(SIZE, GFP_KERNEL);
+        if (!buffer)
+                return -ENOMEM;
+
+        if (condition1) {
+                result = 1;
+                goto out_free_buffer;
+        }
+        
+        if (condition2) {
+                result = 2;
+                goto out_free_buffer;
+        }
+        
+        // Success path
+        result = process_buffer(buffer);
+
+out_free_buffer:
+        kfree(buffer);
+        return result;
+}</code></pre></div><div class="DocPage_tipBox__pivBg"><strong>📝 Label Naming:</strong> Use descriptive label names like <code>out_free_buffer:</code>rather than generic <code>err:</code> or <code>error:</code>.</div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Multiple Cleanup Levels</div><pre><code>int initialize_device(void)
+{
+        int ret = SUCCESS;
+        
+        ret = allocate_memory();
+        if (ret != SUCCESS)
+                goto out;
+                
+        ret = init_hardware();
+        if (ret != SUCCESS)
+                goto out_free_memory;
+                
+        ret = start_tasks();
+        if (ret != SUCCESS)
+                goto out_deinit_hardware;
+                
+        return SUCCESS;
+
+out_deinit_hardware:
+        deinit_hardware();
+out_free_memory:
+        free_memory();
+out:
+        return ret;
+}</code></pre></div></section><section id="headers"><h2>Headers</h2><h3>Header Guards</h3><p>Headers should be self-contained, end in <code>.h</code>, and include header guards. Prefer full-path guards derived from the project path.</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ sensor.h</div><pre><code>#ifndef SENSOR_H_
+#define SENSOR_H_
+
+#include &lt;stdint.h&gt;
+#include &lt;stdbool.h&gt;
+
+// Declarations here...
+
+#endif  // SENSOR_H_</code></pre></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Full Path Guard (for larger projects)</div><pre><code>#ifndef PROJECT_DRIVERS_SENSOR_H_
+#define PROJECT_DRIVERS_SENSOR_H_
+
+// For file: project/drivers/sensor.h
+
+#endif  // PROJECT_DRIVERS_SENSOR_H_</code></pre></div><h3>Include What You Use</h3><p>Files must <strong>directly include</strong> the headers that declare the symbols they use. Do not rely on transitive inclusion.</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good - Direct Includes</div><pre><code>// sensor.c needs string.h functions
+#include &quot;sensor.h&quot;
+#include &lt;string.h&gt;    // Directly included
+#include &lt;stdint.h&gt;
+
+void sensor_init(void)
+{
+        memset(&amp;sensor_data, 0, sizeof(sensor_data));  // Uses string.h
+}</code></pre></div></section><section id="includes"><h2>Names and Order of Includes</h2><p>Preferred order with blank lines separating groups:</p><div class="DocPage_includeOrder__5IIXw"><div class="DocPage_includeStep__U9lrM"><div class="DocPage_stepNum__bf5yp">1</div><div><strong>Related header</strong><code>#include &quot;sensor.h&quot;</code></div></div><div class="DocPage_includeStep__U9lrM"><div class="DocPage_stepNum__bf5yp">2</div><div><strong>C system headers</strong><code>#include &lt;string.h&gt;</code></div></div><div class="DocPage_includeStep__U9lrM"><div class="DocPage_stepNum__bf5yp">3</div><div><strong>C++ standard headers</strong><code>#include &lt;vector&gt;</code></div></div><div class="DocPage_includeStep__U9lrM"><div class="DocPage_stepNum__bf5yp">4</div><div><strong>Other libraries</strong><code>#include &lt;freertos/FreeRTOS.h&gt;</code></div></div><div class="DocPage_includeStep__U9lrM"><div class="DocPage_stepNum__bf5yp">5</div><div><strong>Project headers</strong><code>#include &quot;config.h&quot;</code></div></div></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Complete Example</div><pre><code>// sensor.c
+#include &quot;sensor.h&quot;
+
+#include &lt;string.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;stdbool.h&gt;
+
+#include &lt;freertos/FreeRTOS.h&gt;
+#include &lt;freertos/task.h&gt;
+
+#include &quot;config.h&quot;
+#include &quot;utils.h&quot;
+#include &quot;logging.h&quot;</code></pre></div><div class="DocPage_tipBox__pivBg"><strong>📝 Sorting:</strong> Sort includes within each group alphabetically for consistency.</div></section><section id="inline"><h2>Inline Functions</h2><p>Use <code>inline</code> only for <strong>small functions</strong> (rough guideline: ≤ 10 lines). Avoid inlining large functions or functions with loops/switches unless justified.</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good - Small Inline Function</div><pre><code>static inline uint32_t min(uint32_t a, uint32_t b)
+{
+        return (a &lt; b) ? a : b;
+}
+
+static inline bool is_valid_pin(uint8_t pin)
+{
+        return (pin &lt; MAX_GPIO_PINS);
+}</code></pre></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw DocPage_bad__SUOUD">❌ Bad - Large Inline</div><pre><code>static inline void process_large_buffer(uint8_t *buf, size_t len)
+{
+        // 50+ lines of complex logic...
+        // Should NOT be inline!
+}</code></pre></div></section><section id="local-vars"><h2>Local Variables</h2><p>Declare variables in the <strong>narrowest scope possible</strong> and<strong>initialize them on declaration</strong> when feasible.</p><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good - Narrow Scope</div><pre><code>void process_array(void)
+{
+        for (int i = 0; i &lt; MAX_COUNT; i++) {
+                int value = array[i];  // Declared in loop scope
+                
+                if (value &gt; threshold) {
+                        int processed = process_value(value);
+                        store_result(processed);
+                }
+        }
+}</code></pre></div><div class="DocPage_tipBox__pivBg"><strong>⚠️ Performance Note:</strong> In tight loops, hoist object creation out of the loop if constructors/initialization are expensive.</div></section><section id="commenting"><h2>Commenting</h2><p>Comments should explain <strong>WHAT</strong> the code does, not HOW. Prefer well-structured, self-documenting code over excessive comments.</p><h3>File Header Comment</h3><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ File Header Template</div><pre><code>/****************************************************************************
+ * File Name: mbr3_api.c
+ *
+ * Version 1.00
+ *
+ * Author: ip_v1
+ *
+ * Description:
+ *   This file contains the code to access CY8CMBR3xxx Touch chips
+ *
+ ****************************************************************************/</code></pre></div><h3>Multi-Line Comments</h3><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Kernel-Style Comment Block</div><pre><code>/*
+ * This is a multi-line comment block.
+ * It uses the kernel style with asterisks
+ * aligned on the left side.
+ */</code></pre></div><h3>Single-Line Comments</h3><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Good Comments</div><pre><code>// Delay required for sensor stabilization after power-on
+delay_ms(100);
+
+// Retry with exponential backoff to avoid server overload
+retry_delay = retry_delay * 2;</code></pre></div><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw DocPage_bad__SUOUD">❌ Bad Comments</div><pre><code>// Delay for 100 milliseconds
+delay_ms(100);
+
+// Multiply retry_delay by 2
+retry_delay = retry_delay * 2;</code></pre></div></section><section id="templates"><h2>Templates</h2><h3>Function Header Template</h3><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ Standard Function Header</div><pre><code>/******************************************************************************
+ * Function Name: bgc_sys_init
+ ******************************************************************************
+ *
+ * Summary:
+ *  This function is used to initialize the system
+ *
+ * Parameters:
+ *  None
+ *
+ * Return:
+ *  int - SUCCESS (0) on success, error code on failure
+ *
+ *******************************************************************************/
+int bgc_sys_init(void)
+{
+        // Function implementation
+}</code></pre></div><h3>Complete File Example</h3><div class="DocPage_example__iWkJJ"><div class="DocPage_exampleLabel___BUAw">✅ sensor_driver.c</div><pre><code>/****************************************************************************
+ * File Name: sensor_driver.c
+ *
+ * Version 1.0.0
+ *
+ * Author: Inderpreet Singh (ip_v1)
+ *
+ * Description:
+ *   DHT22 temperature and humidity sensor driver for ESP32
+ *
+ ****************************************************************************/
+
+#include &quot;sensor_driver.h&quot;
+
+#include &lt;string.h&gt;
+#include &lt;stdint.h&gt;
+
+#include &lt;freertos/FreeRTOS.h&gt;
+#include &lt;driver/gpio.h&gt;
+
+#include &quot;config.h&quot;
+#include &quot;logging.h&quot;
+
+/*
+ * Private constants
+ */
+#define SENSOR_TIMEOUT_MS       1000
+#define CALIBRATION_OFFSET      0.5f
+
+/*
+ * Private variables
+ */
+static bool is_initialized = false;
+static struct sensor_data last_reading;
+
+/*
+ * Private function prototypes
+ */
+static int verify_sensor(void);
+static void apply_calibration(struct sensor_data *data);
+
+/******************************************************************************
+ * Function Name: sensor_init
+ ******************************************************************************
+ * Summary:
+ *  Initialize the DHT22 sensor driver
+ *
+ * Parameters:
+ *  None
+ *
+ * Return:
+ *  int - SUCCESS (0) or error code
+ ******************************************************************************/
+int sensor_init(void)
+{
+        int ret;
+        
+        gpio_set_mode(SENSOR_PIN, GPIO_MODE_INPUT);
+        
+        ret = verify_sensor();
+        if (ret != SUCCESS)
+                goto out;
+                
+        is_initialized = true;
+        log_info(&quot;Sensor initialized&quot;);
+
+out:
+        return ret;
+}
+
+/******************************************************************************
+ * Function Name: sensor_read
+ ******************************************************************************
+ * Summary:
+ *  Read temperature and humidity from sensor
+ *
+ * Parameters:
+ *  data - Pointer to sensor_data structure to fill
+ *
+ * Return:
+ *  int - SUCCESS (0) or error code
+ ******************************************************************************/
+int sensor_read(struct sensor_data *data)
+{
+        if (!is_initialized)
+                return ERROR_NOT_READY;
+                
+        if (!data)
+                return ERROR_INVALID;
+        
+        // Read sensor (implementation details...)
+        
+        apply_calibration(data);
+        
+        return SUCCESS;
+}
+
+/*
+ * Private function: Verify sensor is connected and responding
+ */
+static int verify_sensor(void)
+{
+        // Implementation...
+        return SUCCESS;
+}
+
+/*
+ * Private function: Apply calibration offset to sensor data
+ */
+static void apply_calibration(struct sensor_data *data)
+{
+        data-&gt;temperature += CALIBRATION_OFFSET;
+}</code></pre></div></section><section id="references"><h2>References &amp; Further Reading</h2><div class="DocPage_referenceList__bZvf1"><a href="https://www.kernel.org/doc/html/v4.10/process/coding-style.html" target="_blank" rel="noopener" class="DocPage_referenceLink__nG0Ym"><div class="DocPage_refIcon__BlaPa">📘</div><div><strong>Linux Kernel Coding Style</strong><p>The foundation of this style guide</p></div></a><a href="https://google.github.io/styleguide/cppguide.html" target="_blank" rel="noopener" class="DocPage_referenceLink__nG0Ym"><div class="DocPage_refIcon__BlaPa">📗</div><div><strong>Google C++ Style Guide</strong><p>Modern C++ best practices</p></div></a><div class="DocPage_referenceLink__nG0Ym"><div class="DocPage_refIcon__BlaPa">📕</div><div><strong>The C Programming Language</strong><p>K&amp;R - The classic reference</p></div></div><div class="DocPage_referenceLink__nG0Ym"><div class="DocPage_refIcon__BlaPa">📙</div><div><strong>The Practice of Programming</strong><p>Kernighan &amp; Pike - Timeless wisdom</p></div></div></div></section><div class="DocPage_quickReference__2Ob7N"><h3>🎯 Quick Reference Checklist</h3><div class="DocPage_checklistGrid__w3i2R"><div class="DocPage_checkItem__wAwsr">✅ Lines ≤ 79 characters</div><div class="DocPage_checkItem__wAwsr">✅ 8-character indentation</div><div class="DocPage_checkItem__wAwsr">✅ Opening brace on same line (except functions)</div><div class="DocPage_checkItem__wAwsr">✅ Descriptive global names</div><div class="DocPage_checkItem__wAwsr">✅ Short local names</div><div class="DocPage_checkItem__wAwsr">✅ Avoid typedefs for structs</div><div class="DocPage_checkItem__wAwsr">✅ Functions do one thing</div><div class="DocPage_checkItem__wAwsr">✅ Return 0 for success</div><div class="DocPage_checkItem__wAwsr">✅ Use goto for cleanup</div><div class="DocPage_checkItem__wAwsr">✅ Include header guards</div><div class="DocPage_checkItem__wAwsr">✅ Include what you use</div><div class="DocPage_checkItem__wAwsr">✅ Comment WHAT, not HOW</div></div></div><div class="DocPage_docFooter__OKnmC"><a href="/docs" class="DocPage_backButton___9nTA">← Back to Documentation</a><div class="DocPage_footerLinks__o2_Ky"><a href="/docs/github-guide">GitHub Guide →</a><a href="/docs/project-development">Project Development →</a></div></div></article></div></main><footer class="Layout_footer__3v8iv"><p>© 2025 Layered Systems - Engineering judgment, one layer at a time.</p><div class="Layout_socialLinks__WZeQy"><a href="https://github.com/inderpreet" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://twitter.com/ip_v1" target="_blank" rel="noopener noreferrer">Twitter</a><a href="https://instagram.com/ip_v1" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></footer></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/docs/firmware-style-guide","query":{},"buildId":"phl_WOpLyX2gCvGrSm1hh","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}</script></body></html>
